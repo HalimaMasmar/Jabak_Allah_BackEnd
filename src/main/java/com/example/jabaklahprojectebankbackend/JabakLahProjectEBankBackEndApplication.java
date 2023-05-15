@@ -1,6 +1,6 @@
 package com.example.jabaklahprojectebankbackend;
 
-import com.example.jabaklahprojectebankbackend.client.ClientRepository;
+import com.example.jabaklahprojectebankbackend.repository.ClientRepository;
 import com.example.jabaklahprojectebankbackend.entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,6 +19,8 @@ public class JabakLahProjectEBankBackEndApplication implements CommandLineRunner
 
     @Override
     public void run(String... args) throws Exception {
+        Client client3 = new Client("hamza@gmail","med","mohammed","bougra");
+        repo.save(client3);
 
     }
 }

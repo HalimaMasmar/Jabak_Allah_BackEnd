@@ -1,4 +1,4 @@
-package com.example.jabaklahprojectebankbackend.client;
+package com.example.jabaklahprojectebankbackend.repository;
 
 import com.example.jabaklahprojectebankbackend.entity.Client;
 import org.springframework.data.repository.CrudRepository;
