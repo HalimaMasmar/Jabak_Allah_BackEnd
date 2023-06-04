@@ -4,6 +4,7 @@ import com.example.ensapay.models.Admin;
 import com.example.ensapay.service.AdminService;
 import com.example.ensapay.service.AgentService;
 import com.example.ensapay.service.FactureService;
+import com.example.ensapay.service.VirementService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,13 +28,18 @@ public class EnsapayApplication {
 
 
     @Bean
-    CommandLineRunner run(FactureService factureService, AgentService agentService) {
+    CommandLineRunner run(FactureService factureService, AgentService agentService, AdminService adminService, VirementService virementService ) {
         return args -> {
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
             Date date = new Date();
 
+            /*virementService.createVirement("Dar","Marrakech","hok", "En attente" ,date,"+212123456789","123456");
+            virementService.createVirement("Dar","Marrakech","hok1", "En attente" ,date,"+212123456789","123456");
+            virementService.createVirement("Dar","Marrakech","hok2", "En attente" ,date,"+212123456789","123456");
+*/
+            //adminService.createAgent("Admin","agent1","agent1","CIN",date,"marrakech","ag1ent@mail.com","0612452258","az1212","az1212");
 
             factureService.createFacture("unpaied", 20.0, "paiment facture electricite", date, "IAMRECHARGE", "+212123456789");
             factureService.createFacture("unpaied", 47.0, "paiment facture electricite", date, "INWIRECHARGE", "+212123456789");

@@ -149,11 +149,11 @@ public class AgentService {
                 "    <h1>Bienvenue chez JabkLah</h1>\n" +
                 "  </div>\n" +
                 "  <div class=\"content\">\n" +
-                "    <h2>Cher <span id=\"customerName\">"+ nom +"</span>,</h2>\n" +
+                "    <h2>Cher <span id=\"customerName\">"+ prenom +"</span>,</h2>\n" +
                 "    <p>Merci d'avoir choisi JabkLah pour vos besoins bancaires. Nous sommes ravis de vous accueillir en tant que nouveau client.</p>\n" +
                 "    <p>Voici vos informations de connexion :</p>\n" +
                 "    <ul>\n" +
-                "      <li><strong>Nom d'utilisateur :</strong> <span id=\"customerEmail\">"+ email +"</span></li>\n" +
+                "      <li><strong>Nom d'utilisateur :</strong> <span id=\"customerEmail\">"+ numTel +"</span></li>\n" +
                 "      <li><strong>Mot de passe :</strong> <span id=\"customerPassword\">"+ pass +"</span></li>\n" +
                 "    </ul>\n" +
                 "    <p>Nous vous encourageons à vous connecter dès maintenant à votre compte en utilisant les informations ci-dessus. Une fois connecté, vous pourrez accéder à toutes les fonctionnalités de notre banque en ligne.</p>\n" +
@@ -195,4 +195,7 @@ public class AgentService {
         if (agent.getFirstAuth()) return false;
         else return true;
     }
+
+
+
 }

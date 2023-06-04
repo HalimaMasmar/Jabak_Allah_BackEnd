@@ -1,5 +1,6 @@
 package com.example.ensapay.Controllers;
 
+import com.example.ensapay.models.Facture;
 import com.example.ensapay.models.Virement;
 import com.example.ensapay.request.VirementRequest;
 import com.example.ensapay.service.VirementService;
@@ -22,9 +23,14 @@ public class VirementController {
 
     @PostMapping("/effectuerVirement")
 
-    public Boolean effectuerVirement(@Valid @RequestBody VirementRequest virementRequest) throws IOException {
+    public void effectuerVirement(@Valid @RequestBody VirementRequest virementRequest) throws IOException {
 
-        return virementService.effectuerVirement(virementRequest.getRibDest(),virementRequest.getRibSrc(),virementRequest.getMontant());
+        virementService.createVirement( virementRequest.getMontant(),virementRequest.getRibSrc(),virementRequest.getRibDest(),virementRequest.getState(), virementRequest.getDate(),virementRequest.getOwnerphone(),virementRequest.getCin() );
+    }
+
+    @GetMapping("/listVirement/{ownerphone}")
+    public List<Virement> getVirement(@Valid @PathVariable String ownerphone){
+        return  virementService.getVirement(ownerphone);
     }
 
     @GetMapping("/VirementsEnvoyer")
@@ -38,5 +44,19 @@ public class VirementController {
         return virementService.getListVirementsRecevoir(virementRequest.getRibDest());
     }
 
+    @GetMapping("/listviremetAgent/{adresse}")
+    public List<Virement> getVirementRcv(@Valid @PathVariable String adresse){
+        return virementService.getVirementByCity(adresse);
+    }
+
+    @PostMapping("/updateState/{ref}/{state}")
+    public void updateState(@Valid @PathVariable String ref,@Valid @PathVariable String state) throws IOException {
+        virementService.updateSatate( ref,state);
+    }
+
+    @DeleteMapping("/deleteVirment/{ref}")
+    public void deletVirment(@Valid @PathVariable String ref) throws IOException {
+        virementService.deleteVirment(ref);
+    }
 
 }
