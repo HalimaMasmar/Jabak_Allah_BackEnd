@@ -272,11 +272,16 @@ public class TestController {
         return ResponseEntity.ok().body(userService.clienHasAccount(numTel));
     }
 
+    @PostMapping("/updateSold")
+    public ResponseEntity<Boolean> updateSoldToUser(@RequestParam("numTel") String numTel, @RequestParam("solde") Double solde) {
+        return ResponseEntity.ok().body(userService.updateSolde(numTel, solde));
+    }
+
     @PostMapping(value = "/createbankAccount",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createClientBankAccount(@Valid @RequestBody CreateCompteRequest createCompteRequest) throws IOException {
 
         System.out.println("inside api : "+createCompteRequest.getTypecompte() +" ----"+createCompteRequest.getNumTel());
-        userService.createCompteToUser(createCompteRequest.getNumTel(),createCompteRequest.getTypecompte());
+        userService.createCompteToUser(createCompteRequest.getNumTel(),createCompteRequest.getTypecompte(), createCompteRequest.getSolde());
         return ResponseEntity.ok().body("bank account has been created");
     }
 

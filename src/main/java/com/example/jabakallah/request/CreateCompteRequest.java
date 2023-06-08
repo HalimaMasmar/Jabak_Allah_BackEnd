@@ -16,6 +16,19 @@ public class CreateCompteRequest {
     @Size(max = 50)
 
     private String numTel;
+    @NotBlank
+    @Size(max = 50)
+
+    private Double solde;
+    public Double getSolde() {
+        return solde;
+    }
+
+    public void setSolde(Double solde) {
+        this.solde = solde;
+    }
+
+
 
     public String getTypecompte() {
         return typecompte;

@@ -1,6 +1,7 @@
 package com.example.jabakallah.service;
 
 import com.example.jabakallah.models.Compte;
+import com.example.jabakallah.models.Facture;
 import com.example.jabakallah.models.UserApp;
 import com.example.jabakallah.repository.CompteRepo;
 import com.example.jabakallah.repository.UserRepo;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.mail.MessagingException;
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.Calendar;
 import java.util.Date;
 
 @Service @RequiredArgsConstructor
@@ -49,7 +51,7 @@ return "password changed successfully for Client";
 
     }
 
-    public Boolean createCompteToUser(String numTel , String typecompte) throws IOException {
+    public Boolean createCompteToUser(String numTel , String typecompte,  Double solde) throws IOException {
         UserApp user = userRepo.findByNumTel(numTel);
         Compte compte =new Compte();
         String rib = genererRib();
@@ -59,7 +61,7 @@ return "password changed successfully for Client";
             System.out.println("type compte hase arrived empty null");
         }
         compte.setType_compte(typecompte);
-        compte.setSolde(0.0);
+        compte.setSolde(solde);
         compte.setComptename("checking Account");
         user.setCompte(compte);
         compteRepo.save(compte);
@@ -80,6 +82,21 @@ return "password changed successfully for Client";
 
         log.info("RIB of client genarated: "+rib);
         return rib;
+    }
+
+    public boolean updateSolde(String numTel,Double solde){
+
+        UserApp user = getClientInfo(numTel);
+        Compte compte = user.getCompte();
+        System.out.println("laaaam"+compte);
+        Double old = compte.getSolde();
+        System.out.println("paaak"+old);
+        Double nouveau = old + solde;
+        System.out.println("siiiiiiir"+nouveau);
+        compte.setSolde(nouveau);
+        compteRepo.save(compte);
+        return true;
+
     }
 
     public Boolean clienHasAccount(String numTel){
