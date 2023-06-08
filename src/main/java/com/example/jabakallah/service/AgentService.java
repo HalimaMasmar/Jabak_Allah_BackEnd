@@ -85,7 +85,7 @@ public class AgentService {
                 "  <meta charset=\"UTF-8\">\n" +
                 "  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
                 "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-                "  <title>Bienvenue chez ABC Bank</title>\n" +
+                "  <title>Bienvenue chez Jabakallah E-Bank</title>\n" +
                 "  <style>\n" +
                 "    /* Styles pour le corps de l'e-mail */\n" +
                 "    body {\n" +

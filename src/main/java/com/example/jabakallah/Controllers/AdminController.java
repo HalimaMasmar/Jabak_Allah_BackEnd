@@ -25,10 +25,9 @@ import java.util.Set;
 @RequiredArgsConstructor
 
 public class AdminController {
-
+    private final UserService userService;
     private final AdminService adminService;
     private final AgentService agentService;
-    private final UserService userService;
 
     @Autowired
     private  AgentFileService agentFileService;

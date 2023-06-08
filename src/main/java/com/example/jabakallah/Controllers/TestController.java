@@ -64,6 +64,11 @@ public class TestController {
 
     @Autowired
     JwtUtils jwtUtils;
+    @GetMapping("/listClients")
+    public ResponseEntity<List<UserApp>>  getAgents() {
+        return ResponseEntity.ok().body(
+                agentService.getAllClient());
+    }
     @PostMapping("/adminSignin")
     public ResponseEntity<?> authenticateUserAdmin(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -292,9 +297,5 @@ public class TestController {
     public ResponseEntity<Agent> getAgent(@Valid @RequestBody String numTel) {
         return ResponseEntity.ok().body(agentService.getAgent(numTel));
     }
-    @GetMapping("/listClients")
-    public ResponseEntity<List<UserApp>>  getAgents() {
-        return ResponseEntity.ok().body(
-                agentService.getAllClient());
-    }
+
 }

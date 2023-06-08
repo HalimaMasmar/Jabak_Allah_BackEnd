@@ -20,7 +20,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/facture")
 public class FactureController {
-
     @Autowired
     private FactureService factureService;
 
@@ -63,8 +62,6 @@ public class FactureController {
     public List<Facture> getFactureListPaid(@Valid @PathVariable String ownerphone){
         return factureService.getListFacturePaid(ownerphone);
     }
-
-
 
     @PostMapping("/addFacture")
     public ResponseEntity<?> registerFacture(@Valid @RequestBody CreateFactureRequest createFactureRequest) throws IOException {

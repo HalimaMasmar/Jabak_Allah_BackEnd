@@ -108,12 +108,94 @@ public class AdminService {
         agent.setPassword(passwordEncoder.encode(pass));
         agentRepo.save(agent);
 
-        String content="<h1> Hello Agent "+ nom +" "+prenom+" and Welcome To JabakAllah  application.</h1> </br>" +
-                " <h3> please use these informations to log In to your Account: </h3>" +
-                "<ul>" +
-                "<li style='color:blue;'> User Name :  "+uid+" </li> " +
-                "<li style='color:blue;'> Password : "+pass+" </li> " +
-                "</ul>";
+
+        String content  = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "<head>\n" +
+                "  <meta charset=\"UTF-8\">\n" +
+                "  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "  <title>Bienvenue chez Jabakallah E-Bank</title>\n" +
+                "  <style>\n" +
+                "    /* Styles pour le corps de l'e-mail */\n" +
+                "    body {\n" +
+                "      font-family: Arial, sans-serif;\n" +
+                "      background-color: #f9f9f9;\n" +
+                "      margin: 0;\n" +
+                "      padding: 0;\n" +
+                "    }\n" +
+                "    \n" +
+                "    /* Styles pour l'en-tête */\n" +
+                "    .header {\n" +
+                "      background-color: #f36806;\n" +
+                "      color: #ffffff;\n" +
+                "      padding: 20px;\n" +
+                "      text-align: center;\n" +
+                "    }\n" +
+                "    \n" +
+                "    .header h1 {\n" +
+                "      margin: 0;\n" +
+                "      font-size: 24px;\n" +
+                "    }\n" +
+                "    \n" +
+                "    /* Styles pour le contenu */\n" +
+                "    .content {\n" +
+                "      padding: 20px;\n" +
+                "    }\n" +
+                "    \n" +
+                "    .content h2 {\n" +
+                "      font-size: 20px;\n" +
+                "      margin-top: 0;\n" +
+                "    }\n" +
+                "    \n" +
+                "    .content p {\n" +
+                "      margin-bottom: 20px;\n" +
+                "    }\n" +
+                "    \n" +
+                "    .content .highlight {\n" +
+                "      background-color: #3498db;\n" +
+                "      color: #ffffff;\n" +
+                "      padding: 5px 10px;\n" +
+                "      border-radius: 5px;\n" +
+                "      display: inline-block;\n" +
+                "    }\n" +
+                "    \n" +
+                "    /* Styles pour le pied de page */\n" +
+                "    .footer {\n" +
+                "      background-color:  #f36806;\n" +
+                "      color: #ffffff;\n" +
+                "      padding: 20px;\n" +
+                "      text-align: center;\n" +
+                "    }\n" +
+                "    \n" +
+                "    .footer p {\n" +
+                "      margin: 0;\n" +
+                "      font-size: 14px;\n" +
+                "    }\n" +
+                "  </style>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "  <div class=\"header\">\n" +
+                "    <h1>Bienvenue chez JabkLah</h1>\n" +
+                "  </div>\n" +
+                "  <div class=\"content\">\n" +
+                "    <h2>Cher <span id=\"customerName\">"+ nom +" "+prenom+"</span>,</h2>\n" +
+                "    <p>Nous sommes ravis de t'accueillir dans notre équipe ! </p>\n" +
+                "    <p>Voici vos informations de connexion :</p>\n" +
+                "    <ul>\n" +
+                "      <li><strong>Nom d'utilisateur :</strong> <span id=\"customerEmail\">" +uid+"</span></li>\n" +
+                "      <li><strong>Mot de passe :</strong> <span id=\"customerPassword\">"+ pass +"</span></li>\n" +
+                "    </ul>\n" +
+                "    <p>" +
+                " Ton expertise et tes compétences vont certainement contribuer à notre succès. Nous croyons fermement que tu vas apporter une valeur ajoutée significative à notre Agence Jabakallah</p>\n" +
+                "    <p>Si vous avez des questions ou avez besoin d'aide, n'hésitez pas à nous contacter. Notre équipe est là pour vous aider.</p>\n" +
+                "    <p>Cordialement,<br>L'équipe JabkLah</p>\n" +
+                "  </div>\n" +
+                "  <div class=\"footer\">\n" +
+                "    <p>Ce message a été envoyé automatiquement. Veuillez ne pas y répondre.</p>\n" +
+                "  </div>\n" +
+                "</body>\n" +
+                "</html>\n";
         emailService.sendEmail(email,content);
         return  true;
     }
