@@ -288,7 +288,13 @@ public class TestController {
     public ResponseEntity<UserApp> getClientInfo(@Valid @RequestBody String numTel) {
         return ResponseEntity.ok().body(userService.getClientInfo(numTel));
     }
-
-
-
+    @PostMapping("/getAgent")
+    public ResponseEntity<Agent> getAgent(@Valid @RequestBody String numTel) {
+        return ResponseEntity.ok().body(agentService.getAgent(numTel));
+    }
+    @GetMapping("/listClients")
+    public ResponseEntity<List<UserApp>>  getAgents() {
+        return ResponseEntity.ok().body(
+                agentService.getAllClient());
+    }
 }

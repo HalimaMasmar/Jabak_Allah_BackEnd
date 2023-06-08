@@ -5,7 +5,6 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class SignupRequestAgent {
-
     @NotBlank
     @Size(min = 3, max = 20)
     private String username;
@@ -14,6 +13,8 @@ public class SignupRequestAgent {
     @Size(max = 50)
     @Email
     private String email;
+
+
 
     @NotBlank
     @Size(min = 2, max = 40)

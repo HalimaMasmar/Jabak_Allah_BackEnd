@@ -180,7 +180,10 @@ public class AgentService {
         log.info("Fetching all users BY agent");
         return userRepo.findAll();
     }
-
+    public List<UserApp> getAllClient() {
+        log.info("Fetching all users BY agent");
+        return userRepo.findAll();
+    }
     public void changePassword(String uid, String newPassword) {
         Agent agent = agentRepo.findByUsername(uid);
         String encodedPassword = passwordEncoder.encode(newPassword);
@@ -188,7 +191,10 @@ public class AgentService {
         agent.setPassword(encodedPassword);
         agentRepo.save(agent);
     }
-
+    public Agent getAgent(String username) {
+        log.info("Fetching user by the agent {}", username);
+        return agentRepo.findByUsername(username);
+    }
     public Boolean agentHaschangedPassword(String username){
         Agent agent = agentRepo.findByUsername(username);
 
